@@ -69,7 +69,9 @@ Our package heavily relies on its dependencies. In particular you will need the 
 
 The following flowchart summarizes the project workflow:
 
-![flow](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/Global_graph_2_2.png)
+
+
+![flow](screenshots/Global_graph_2_2.png)
 
 ### Basic commands 
 
@@ -106,7 +108,7 @@ This report will describe the project we conducted during the third semester of 
 ### Some words about ROS
 ROS (Robot Operating Software) is a free middleware platform used to drive robots through programming. It can perform tasks similar to a hardware such as hardware abstractions as well as low level managing and control through terminal, using commands like 'roscd'. In our case, one important feature needed for our project is embodied by the package creation and managing option, which is simple, efficient and straight forward to perform any wanted actions on a robot. Most ROS projects if not all are based on this tool. Several version of ROS came to existence since its creation in 2007 by Willow Garage, the one used for our current project being **ROS Kinetic**.
 
-![Kinetic](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/Kinetic.png)
+![Kinetic](screenshots/Kinetic.png)
 
 Moreover ROS has no language preference for coding, meaning that several programming language can be fully used without compatibility issues, with the possibility to perform interactions between them. In particular, ROS fully support C++ and Python coding through the **roscpp** and **rospy** in-built implementation called "packages", as well as many associated custom libraries, so one can create action programs called "nodes" and adapt them inside a package easily. The two current drawbacks of ROS lie in the point that the midddleware is not cross-platform, and in the point that each version is closely linked to a parent Ubuntu release. For Example, ROS Kinetic is attached to Ubuntu Xenial Xerus 16.04 and cannot be used on a newer Ubuntu distribution.
 
@@ -115,17 +117,17 @@ Moreover ROS has no language preference for coding, meaning that several program
 #### 1. Turtlebot
 Turtlebot2 is the robotic platform used to built this project which has been originally edited by Willow Garage (Version-I in 2010). This version improves on the previous one by using a better base as well as a more robust construction. The Kobuki mobile base which constitute the core of the robot is derived from a vacuum cleaning robot made by the firm Yujin Robot in South Korea. The current robotic system comes with some previously done modification, which includes a LiDAR sensor to scan the environment, in addition to the pre-installed Kinnect V1 for artifical vision and 3D perception. Moreover, a new embedded laptop has been added to the device, featuring an i5 processor with 8GB RAM power, for a battery duration of 6 to 10 hours, making the system useful for multiple modifications without power issue. All of these presented features were used to conduct the project.
 
-![ttb](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/im1.jpg)
+![ttb](screenshots/im1.jpg)
 
 #### 2. Wifi Module
 To complete the planned tasks of the project, we used an external WIFI board called NodeMCU which is an open source LUA based firmware developed for ESP8266 Wi-Fi chip. It will allow the turtlebot to connect to a private cloud server which will then send the requested instructions to perform the desired action. This feature allow the robot to perform indirect controlling through embedded tasks such as workflow image processing.
 
-![mcu](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/im4.jpg) 
+![mcu](screenshots/im4.jpg) 
 
 ### Original Scenario
 Firstly, we decided to implement several tasks and make them work in a coherent manner. The Turtlebot has to perform autonomous navigation with a pre-built map of a chosen environment (here the laboratory) as a first task while doing basic Augmented-Reality tag detection, before applying detection concept to QR codes from which a link leading to readable instructions is openened. The final result being a moving robot remotely controlling items from distance. As a proof on concept, we decided to control a LED in function of the Robot's displacement. Those objectives were summarized into the following Gantt diagram and flowchart.
 
-![gantt](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/Gantt_Chart2.png)
+![gantt](screenshots/Gantt_Chart2.png)
 
 # ORIGINAL WORK
 Here is the content related to already existing work, from which ours is derivated
@@ -231,7 +233,7 @@ From there the global map could be created. To do so We used a Logitech joystick
 
 This entire process allowed us to pilot the Turtlebot through a joystick while creating a map by using gmapping. As the process has to be run a single time, we did not include it as a launch file into our project package. The resulting output are a .pgm and a .yaml file containing the coordinates parameters saved under the common name **my_map**, which has been renamed prior to autonomous navigation. The following result represents the obtained map image :
 
-![map image](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/my_mapfirst_2.png)
+![map image](screenshots/my_mapfirst_2.png)
 
 Through this entire process, the data acquired from the environment are used to compute a dynamic local map around the Turtlebot which is compared to the original environment present on the background global map. Since inflation radius is also enabled in this case, the robot will avoid obstacles not present on the original map, but detected on the dynamic one.
 
@@ -269,7 +271,7 @@ At this moment the navigation was only doable through "set and click" on target 
 #### Navigation Node
 To fulfill our autonomous navigation task, we extracted the necessary coordinates to move the robot according to our plan. Original trajectory followed a simple triangle-like shape, but was complexified after the addition of QR coordinate points to suit the assigned tasks.
 
-![traj](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/im5.jpg)
+![traj](screenshots/im5.jpg)
 
 The following set of coordinates were found regarding our map parameters through Rviz, and are organized in the following order : 
 
@@ -329,7 +331,7 @@ The above screenshot presents the original result obtained after remapping (AR T
 
 To have a complete overview of the work, One can use and custom Rviz ROS's visualization tool. Here several configurations were made for the project to properly display the outputs of our package. The first image shows an example of result obtained with the [unused](#TROUBLESHOOTING) **Detector_3.rviz** config.
 
-![img_rviz](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/double_scan.png)
+![img_rviz](screenshots/double_scan.png)
 
 The cloud of points data were displayed originally as the launch file instructions publish into the **/camera/depth_registered/points** and general **/camera_rgb_optical_frame** topics. One can watch with more precision the AR Tags detection, associated to their environment.
 
@@ -346,7 +348,7 @@ The following dependencies were added to the package, and are related to the vis
 - visp_tracker
 
 The following results were achieved:
-[Qr_res](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/QR_2.png)
+[Qr_res](screenshots/QR_2.png)
 
 ### Remote control of a LED
 
@@ -420,7 +422,7 @@ The second main problem lies in the Kinect use. The original believe was that th
 ### Displaying the results in RViz
 Several RViz configuration files exists in the package, the one used by default being **AR_detection_light.rviz** as it is less power demanding than the two other ones while keeping enough information to display. The reason here being that the connection between the workstation and the robot was often lost due to saturation, as well as cpu overloading. 
 
-![cpu](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/CPU_overloading.png)
+![cpu](screenshots/CPU_overloading.png)
 
 ### Remapping topics for AR tag detection
 Here, the issue was lying into the proper topic to use. The created launch file was properly working but without result display. In the **ar_launcher.launch** file based on the original **pr2_indiv.launch** one, the topics were changed according to the following [site](http://ros-robotics.blogspot.com/2015/04/recognize-ar-tags-with-ros.html) information.
@@ -437,17 +439,17 @@ Several issues arose when trying to establish the connection between the NodeMCU
 ### Demonstration links and images
 During the whole process, many nodes interacting through an important number of topics were can be vizualized using rqt_graph :
 
-![graph](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/rosgraph_f_2.png)
+![graph](screenshots/rosgraph_f_2.png)
 
 The following screen captures are the outputs:
 
 A. Map, Navigation and AR Tag Detection:
 
-![img_global](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/s2.png)
+![img_global](screenshots/s2.png)
 
 B. QR Detection and LED ON/OFF using Wifi-module:
 
-![LED_there be lighten](https://github.com/francoislegd/Robotic-ROS-Project-MSCV2/blob/master/screenshots/s_edit.png)
+![LED_there be lighten](screenshots/s_edit.png)
 
 C. Project Demo Video Link: **[Available here](https://www.youtube.com/watch?v=rtxCUmQBTSE)**
 
