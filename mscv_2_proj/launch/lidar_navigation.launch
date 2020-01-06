@@ -1,0 +1,12 @@
+<!--include other launch files-->
+<launch>
+	
+	<include file="$(find turtlebot_vibot_bringup)/launch/minimal_rplidar.launch"/>
+	<include file="$(find turtlebot_vibot_nav)/launch/amcl_demo_rplidar.launch">
+	<arg name = "map_file" value = "/home/turtlebot/ros/kinetic/catkin_ws/src/turtlebot_vibot/turtlebot_vibot_nav/maps/my_mapfirst.yaml"/>
+	</include>
+
+	
+</launch>
+
+

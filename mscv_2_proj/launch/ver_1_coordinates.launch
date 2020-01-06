@@ -1,0 +1,23 @@
+<launch>
+
+	<!--include file = "$(find turtlebot_rviz_launchers)/launch/view_navigation.launch"/-->
+	
+  	<node type="rviz" name="rviz" pkg="rviz" args="-d $(find mscv_2_proj)/rviz/AR_detection_light.rviz"/>
+
+
+	<!-- in fact the goal is to publish a message specifying the right coordinates into the correct topic instead of trying to recreate 
+	a python script for that -->
+
+
+
+	<node pkg = "mscv_2_proj" name = "navigate_to_positions" type="basic_navigation_node.py"/>
+ 	<node pkg="rostopic" type="rostopic" name="rostopic" args=" echo /ARmarker_points"
+  	output="screen"/>
+
+	<!--node pkg = "ws_package_project" name = "navigate_to_pos_2" type="nav_node_2.py"-->
+<!--/node-->
+	<node pkg="mscv_2_proj" name="cv_bridge_demo" type="Qr_code.py" output="screen">
+    	     <remap from="input_rgb_image"   to="/camera/rgb/image_mono" />
+        </node>
+
+</launch>

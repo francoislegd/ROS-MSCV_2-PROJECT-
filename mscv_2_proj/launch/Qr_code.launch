@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="mscv_2_proj" name="cv_bridge_demo" type="Qr_code.py" output="screen">
+    <remap from="input_rgb_image"   to="/camera/rgb/image_mono" />
+    
+  </node>
+  
+</launch>
